@@ -156,6 +156,58 @@
     
     
     <article
+  id="post-VUE生命周期"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/11/28/VUE%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/"
+    >VUE生命周期</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/11/28/VUE%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" class="article-date">
+  <time datetime="2021-11-28T11:01:40.000Z" itemprop="datePublished">2021-11-28</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h3 id="简单的来说Vue生命周期就是Vue实例从创建到销毁的过程就是生命周期"><a href="#简单的来说Vue生命周期就是Vue实例从创建到销毁的过程就是生命周期" class="headerlink" title="简单的来说Vue生命周期就是Vue实例从创建到销毁的过程就是生命周期"></a>简单的来说Vue生命周期就是Vue实例从创建到销毁的过程就是生命周期</h3><p>即指从创建、初始化数据、编译模版、挂载Dom到渲染、更新到渲染、销毁等一系列过程<br>他主要分为8个阶段:<br><code>创建前后、载入前后、更新前后、销毁前后</code><br>即</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">beforeGreat：执行时组件实例还未创建，通常用于插件开发中执行一些初始化任务</span><br><span class="line">created:组件初始化完毕，各种数据可以使用，常用于异步数据获取</span><br><span class="line">beforeMount：未执行渲染、更新，dom未创建</span><br><span class="line">mounted：初始化结束，dom已创建，可用于获取访问数据和dom元素</span><br><span class="line">beforeUpdate：更新前，可用于获取更新前的各种状态</span><br><span class="line">updated：更新后，所有状态已是最新</span><br><span class="line">beforeDestroy：销毁前，可用于一些定时器或订阅的取消</span><br><span class="line">destroyed:组件已销毁</span><br></pre></td></tr></table></figure>
+<hr>
+<p><img src="https://cn.vuejs.org/images/lifecycle.png" alt="生命周期图示"></p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
   id="post-原型和原型链"
   class="article article-type-post"
   itemscope
