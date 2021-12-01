@@ -37,6 +37,21 @@
       </tags>
   </entry>
   <entry>
+    <title>原型和原型链</title>
+    <url>/2021/11/28/%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h2 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">所有引用类型都有一个__proto__(隐式原型)属性，属性值是一个普通的对象</span><br><span class="line">所有函数都有一个prototype(原型)属性，属性值是一个普通的对象</span><br><span class="line">所有引用类型的__proto__属性指向它构造函数的prototype</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">var a = [1,2,3];</span><br><span class="line">a.__proto__ === Array.prototype; // true</span><br></pre></td></tr></table></figure>
+<h2 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">当访问一个对象的某个属性时，会先在这个对象本身属性上查找，如果没有找到，则会去它的__proto__隐式原型上查找，即它的构造函数的prototype</span><br><span class="line">如果还没有找到就会再在构造函数的prototype的__proto__中查找，这样一层一层向上查找就会形成一个链式结构，我们称为原型链。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">function Parent(month)&#123;</span><br><span class="line">    this.month = month;</span><br><span class="line">&#125;</span><br><span class="line">var child = new Parent(&#x27;Ann&#x27;);</span><br><span class="line">console.log(child.month); // Ann</span><br><span class="line">console.log(child.father); // undefined</span><br></pre></td></tr></table></figure>
+<hr>
+<p>原型：JS中的对象都包含了一个prototype的内部属性，这个属性所对应的就是该对象的原型。</p>
+<p>原型链：原型链是有一些用来继承和共享属性的对象组成的对象链。并且原型链的长度是有限的。</p>
+]]></content>
+      <tags>
+        <tag>web前端</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>闭包</title>
     <url>/2021/12/01/%E9%97%AD%E5%8C%85/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p><strong>闭包是什么，闭包的优点是什么？</strong><br><strong>闭包</strong>就是<strong>可以访问另一个函数作用域中的变量函数。</strong><br>首先先了解一下<strong>作用域</strong><br>变量的作用域无非就是两种：<strong>全局变量</strong>和<strong>局部变量</strong>  </p>
@@ -59,21 +74,6 @@
 ]]></content>
       <tags>
         <tag>前端</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>原型和原型链</title>
-    <url>/2021/11/28/%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h2 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">所有引用类型都有一个__proto__(隐式原型)属性，属性值是一个普通的对象</span><br><span class="line">所有函数都有一个prototype(原型)属性，属性值是一个普通的对象</span><br><span class="line">所有引用类型的__proto__属性指向它构造函数的prototype</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">var a = [1,2,3];</span><br><span class="line">a.__proto__ === Array.prototype; // true</span><br></pre></td></tr></table></figure>
-<h2 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">当访问一个对象的某个属性时，会先在这个对象本身属性上查找，如果没有找到，则会去它的__proto__隐式原型上查找，即它的构造函数的prototype</span><br><span class="line">如果还没有找到就会再在构造函数的prototype的__proto__中查找，这样一层一层向上查找就会形成一个链式结构，我们称为原型链。</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">function Parent(month)&#123;</span><br><span class="line">    this.month = month;</span><br><span class="line">&#125;</span><br><span class="line">var child = new Parent(&#x27;Ann&#x27;);</span><br><span class="line">console.log(child.month); // Ann</span><br><span class="line">console.log(child.father); // undefined</span><br></pre></td></tr></table></figure>
-<hr>
-<p>原型：JS中的对象都包含了一个prototype的内部属性，这个属性所对应的就是该对象的原型。</p>
-<p>原型链：原型链是有一些用来继承和共享属性的对象组成的对象链。并且原型链的长度是有限的。</p>
-]]></content>
-      <tags>
-        <tag>web前端</tag>
       </tags>
   </entry>
 </search>
