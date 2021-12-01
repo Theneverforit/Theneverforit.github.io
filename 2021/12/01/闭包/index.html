@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>VUE生命周期 |  MT</title>
+      <title>闭包 |  MT</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -55,7 +55,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-VUE生命周期"
+  id="post-闭包"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -66,7 +66,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  VUE生命周期
+  闭包
 </h1>
  
 
@@ -74,15 +74,15 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2021/11/28/VUE%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" class="article-date">
-  <time datetime="2021-11-28T11:01:40.000Z" itemprop="datePublished">2021-11-28</time>
+      <a href="/2021/12/01/%E9%97%AD%E5%8C%85/" class="article-date">
+  <time datetime="2021-12-01T07:00:33.000Z" itemprop="datePublished">2021-12-01</time>
 </a>   
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">229</span>
+            <span class="post-count">424</span>
         </span>
     </span>
 
@@ -98,18 +98,28 @@
  
     </div>
       
-    <div class="tocbot"></div>
-
 
 
 
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h3 id="简单的来说Vue生命周期就是Vue实例从创建到销毁的过程就是生命周期"><a href="#简单的来说Vue生命周期就是Vue实例从创建到销毁的过程就是生命周期" class="headerlink" title="简单的来说Vue生命周期就是Vue实例从创建到销毁的过程就是生命周期"></a>简单的来说Vue生命周期就是Vue实例从创建到销毁的过程就是生命周期</h3><p>即指从创建、初始化数据、编译模版、挂载Dom到渲染、更新到渲染、销毁等一系列过程<br>他主要分为8个阶段:<br><code>创建前后、载入前后、更新前后、销毁前后</code><br>即</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">beforeGreat：执行时组件实例还未创建，通常用于插件开发中执行一些初始化任务</span><br><span class="line">created:组件初始化完毕，各种数据可以使用，常用于异步数据获取</span><br><span class="line">beforeMount：未执行渲染、更新，dom未创建</span><br><span class="line">mounted：初始化结束，dom已创建，可用于获取访问数据和dom元素</span><br><span class="line">beforeUpdate：更新前，可用于获取更新前的各种状态</span><br><span class="line">updated：更新后，所有状态已是最新</span><br><span class="line">beforeDestroy：销毁前，可用于一些定时器或订阅的取消</span><br><span class="line">destroyed:组件已销毁</span><br></pre></td></tr></table></figure>
-<hr>
-<p><img src="https://cn.vuejs.org/images/lifecycle.png" alt="生命周期图示"></p>
+  <p><strong>闭包是什么，闭包的优点是什么？</strong><br><strong>闭包</strong>就是<strong>可以访问另一个函数作用域中的变量函数。</strong><br>首先先了解一下<strong>作用域</strong><br>变量的作用域无非就是两种：<strong>全局变量</strong>和<strong>局部变量</strong>  </p>
+<p><strong>全局变量</strong>：全局变量就是在全局环境下声明的变量。<br>全局变量在该环境下什么地方都可以被访问，除非等到你将应用程序关闭的时候才会被销毁。但是全局变量容易被修改，容易造成全局污染等问题。  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">var i = 666; //全局变量</span><br><span class="line"></span><br><span class="line">　　function f1()&#123;</span><br><span class="line"></span><br><span class="line">　　　　alert(i); //在一个函数中被使用</span><br><span class="line"></span><br><span class="line">　　&#125;</span><br><span class="line"></span><br><span class="line">f1(); //函数执行</span><br><span class="line"></span><br><span class="line">执行结果就是：666。</span><br><span class="line">```  </span><br><span class="line">**局部变量**：局部变量就是只能在当前这个函数的内部被访问到，等到函数执行完毕后就会被销毁。  </span><br><span class="line"></span><br><span class="line">**了解作用域之后，咱们就来说说闭包：**  </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>function a() {<br>    var i = 0;<br>    function b() {<br>        alert(++i);<br>    }<br>    return b;<br>}<br>var c = a();<br>c();</p>
+<pre><code>当**函数a**的内部**函数b**被**函数a**外的一个变量引用的时候，就创建了一个**闭包**。  
+
+**闭包**：能够读取其他函数内部变量的函数。（应用场景：要获取某函数内部的局部变量）  
+
+**闭包的优点：**  
+`1. 能够读取函数内部的变量  `  
+
+`2.让这些变量一直存在于内存中，不会在调用结束后，被垃圾回收机制回收  `
+
+**闭包的缺点：**  
+`闭包会使函数中的变量保存在内存中，内存消耗很大，所以不能滥用闭包，解决办法是，退出函数之前，将不使用的局部变量删除。`
+</code></pre>
  
       <!-- reward -->
       
@@ -174,12 +184,12 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/11/28/VUE%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/12/01/%E9%97%AD%E5%8C%85/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
 
     </footer>
   </div>
@@ -187,19 +197,10 @@
    
   <nav class="article-nav">
     
-      <a href="/2021/12/01/%E9%97%AD%E5%8C%85/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            闭包
-          
-        </div>
-      </a>
     
-    
-      <a href="/2021/11/28/%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE/" class="article-nav-link">
+      <a href="/2021/11/28/VUE%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">原型和原型链</div>
+        <div class="article-nav-title">VUE生命周期</div>
       </a>
     
   </nav>
