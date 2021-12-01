@@ -185,18 +185,19 @@
        
   <p><strong>闭包是什么，闭包的优点是什么？</strong><br><strong>闭包</strong>就是<strong>可以访问另一个函数作用域中的变量函数。</strong><br>首先先了解一下<strong>作用域</strong><br>变量的作用域无非就是两种：<strong>全局变量</strong>和<strong>局部变量</strong>  </p>
 <p><strong>全局变量</strong>：全局变量就是在全局环境下声明的变量。<br>全局变量在该环境下什么地方都可以被访问，除非等到你将应用程序关闭的时候才会被销毁。但是全局变量容易被修改，容易造成全局污染等问题。  </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">var i = 666; //全局变量</span><br><span class="line"></span><br><span class="line">　　function f1()&#123;</span><br><span class="line"></span><br><span class="line">　　　　alert(i); //在一个函数中被使用</span><br><span class="line"></span><br><span class="line">　　&#125;</span><br><span class="line"></span><br><span class="line">f1(); //函数执行</span><br><span class="line"></span><br><span class="line">执行结果就是：666。</span><br><span class="line">```  </span><br><span class="line">**局部变量**：局部变量就是只能在当前这个函数的内部被访问到，等到函数执行完毕后就会被销毁。  </span><br><span class="line"></span><br><span class="line">**了解作用域之后，咱们就来说说闭包：**  </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">var i = 666; //全局变量</span><br><span class="line"></span><br><span class="line">　　function f1()&#123;</span><br><span class="line"></span><br><span class="line">　　　　alert(i); //在一个函数中被使用</span><br><span class="line"></span><br><span class="line">　　&#125;</span><br><span class="line"></span><br><span class="line">f1(); //函数执行</span><br><span class="line"></span><br><span class="line">执行结果就是：666。</span><br><span class="line">```  </span><br><span class="line">****</span><br><span class="line">**局部变量**：局部变量就是只能在当前这个函数的内部被访问到，等到函数执行完毕后就会被销毁。  </span><br><span class="line"></span><br><span class="line">**了解作用域之后，咱们就来说说闭包：**  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">当**函数a**的内部**函数b**被**函数a**外的一个变量引用的时候，就创建了一个**闭包**。  </span><br></pre></td></tr></table></figure>
 <p>function a() {<br>    var i = 0;<br>    function b() {<br>        alert(++i);<br>    }<br>    return b;<br>}<br>var c = a();<br>c();</p>
-<pre><code>当**函数a**的内部**函数b**被**函数a**外的一个变量引用的时候，就创建了一个**闭包**。  
-
+<pre><code>
 **闭包**：能够读取其他函数内部变量的函数。（应用场景：要获取某函数内部的局部变量）  
 
 **闭包的优点：**  
+
 `1. 能够读取函数内部的变量  `  
 
 `2.让这些变量一直存在于内存中，不会在调用结束后，被垃圾回收机制回收  `
 
 **闭包的缺点：**  
+ 
 `闭包会使函数中的变量保存在内存中，内存消耗很大，所以不能滥用闭包，解决办法是，退出函数之前，将不使用的局部变量删除。`
 </code></pre>
  
